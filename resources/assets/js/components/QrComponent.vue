@@ -163,10 +163,19 @@
                 required: 'Kích thước là bắt buộc',
                 between:'Kích thước là số nguyên trong khoảng 780 - 1920 pixel.'
             }
+        },
+        en:{
+           attributes:{
+                mail:'Email',
+                full_name:'full name',
+                country_code:'country',
+                state_code :'state',
+                city_code:'city',
+           } 
         }
     };
 
-    Validator.localize('vi',dictionary);
+    Validator.localize(config.lang, dictionary);
 
     export default {
         name:'qr-component',
@@ -237,6 +246,7 @@
                 size: 'required|between:780,1920',
             });
             this.$set(this, 'errors', this.validator.errors);
+            //this.validator.localize(config.lang, dictionary);
         },
         methods:{
             init() {
@@ -343,8 +353,8 @@
                 return this.states.length > 0 ? true : false;
             },
             validateForm() {
-                var config = {
-                    email: this.email,
+                let config = {
+                    mail: this.mail,
                     full_name: this.full_name,
                     mobile:this.mobile,
                     country_code:this.country_code,

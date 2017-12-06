@@ -65,27 +65,27 @@ class QrController extends Controller
 
             if( isset( $params['info']['city_code']))
             {
-                $city = \App\Models\City::where('code', $params['info']['city_code'])->first();
-                if( isset( $city->id) )
+                $cityName = get_city_name_by_code($params['info']['city_code']);
+                if( isset( $cityName ) )
                 {
-                    $content .= $city->name. ', ';
+                    $content .= $cityName. ', ';
                 }
             }
             if( isset( $params['info']['state_code']))
             {
-                $state = \App\Models\State::where('iso', $params['info']['state_code'])->first();
-                if( isset( $state->id) )
+                $stateName = get_state_name_by_code($params['info']['state_code']);
+                if( isset( $stateName ) )
                 {
-                    $content .= $state->name. ', ';
+                    $content .= $stateName. ', ';
                 }
             }
             
             if( isset( $params['info']['country_code']))
             {
-                $country = \App\Models\Country::where('iso_a2', $params['info']['country_code'])->first();
-                if( isset( $country->id) )
+                $countryName = get_country_name_by_code( $params['info']['country_code'] );
+                if( isset( $countryName ) )
                 {
-                    $content .= $country->name;
+                    $content .= $countryName;
                 }
             }
 

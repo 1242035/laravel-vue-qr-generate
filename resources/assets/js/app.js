@@ -9,7 +9,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import { appId } from './config';
+import { appId, config } from './config';
 //import VeeValidate from 'vee-validate';
 /*
 Vue.use(VeeValidate,{
@@ -24,6 +24,7 @@ Vue.use(VeeValidate,{
 
 Vue.component('qr-component', require('./components/QrComponent.vue'));
 
+Vue.config.lang = config.lang;
 
 const app = new Vue({
     el: appId,

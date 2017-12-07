@@ -140,6 +140,7 @@ class QrController extends Controller
     public function detail($id)
     {
         $qr = \App\Models\Qr::findOrFail($id);
+        $qr->user()->update(['verified_fields'=>1]);
         return view('qr.detail',['qr' => $qr]);
     }
 }
